@@ -55,10 +55,12 @@
 </div>
 
 */
-
+//**********************************************the card class element in html */
 const cards = document.querySelector('.cards')
 
 function githubCard(user){
+  
+  //********************************   Making the element */
   const card = document.createElement('div'),
         img = document.createElement('img'),
         cardInfo = document.createElement('div'),
@@ -71,22 +73,26 @@ function githubCard(user){
         following = document.createElement('p'),
         bio = document.createElement('p');
 
+        //*********************************adding the text in element */
         img.src = user.avatar_url;
         name.textContent = user.name;
         userName.textContent = user.login;
         location.textContent = user.location;
         profile.textContent = 'Profile:';
         link.href = user.html_url;
+        link.target = 'blank'//***********************page open in new tab when clicked */
         link.textContent = user.html_url;
         followers.textContent = `Followers: ${user.followers}`;
         following.textContent = `Following: ${user.following}`;
         bio.textContent = user.bio;
 
+        //********************************* adding class to the element */
         card.classList.add('card');
         cardInfo.classList.add('card-info');
         name.classList.add('name');
         userName.classList.add('username');
 
+        //************************adding where each element go in page */
         card.appendChild(img);
         card.appendChild(cardInfo);
         cardInfo.appendChild(name);
@@ -98,6 +104,7 @@ function githubCard(user){
         cardInfo.appendChild(following);
         cardInfo.appendChild(bio);
 
+        //******************************************   when mouse enter or leave it make the card large */
         card.addEventListener('mouseenter', e =>{
           card.style.transform = 'scale(1.1)';
           card.style.transition = '0.2s ease-in'
@@ -107,7 +114,7 @@ function githubCard(user){
           card.style.transform = 'scale(1.0)';
         })
 
-
+        //*****************  return the card */
         return card;
 
 }
@@ -120,6 +127,7 @@ function githubCard(user){
   bigknell
 */
 
+//*******************all the github user */
 const followersArray = ['Krunal1997patel', 'RaymondTrinh91', 'JessicaGCooper', 'ikeman32', 'ddelfaus', 'tetondan', 'dustinmyers', 'justsml', 'bigknell'];
 
   followersArray.forEach(names => {
@@ -134,7 +142,7 @@ const followersArray = ['Krunal1997patel', 'RaymondTrinh91', 'JessicaGCooper', '
     })
 
     .catch(err =>{
-      alert(`you have a ${err}`);
+      console.log(`you have a ${err}`);
     })
 
   })
